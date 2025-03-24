@@ -1,0 +1,59 @@
+/* src/styles/main.css */
+
+/* Reset / bas */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Grundstil för body */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+  }
+
+  /* Lila header (Header.js) */
+  .header {
+    background-color: #5c2782; /* lila */
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+
+  .header-left {
+    font-size: 1.6rem;
+    font-weight: bold;
+  }
+
+  /* Menylänkar i headern */
+  .header-navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .header-navbar li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .header-navbar li a:hover {
+    text-decoration: underline;
+  }
+
+  /* Huvudinnehåll på sidorna */
+  .main-content {
+    padding: 2rem;
+  }
+
+  .box {
+    background: #fff;
+    border-radius: 4px;
+    padding: 1rem;
+    margin-top: 1rem;
+  }
