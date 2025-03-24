@@ -30,21 +30,21 @@
   }
 
   /* Menylänkar i headern */
-  .header-navbar ul {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-  }
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
 
-  .header-navbar li a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: 600;
-  }
+.navbar li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+}
 
-  .header-navbar li a:hover {
-    text-decoration: underline;
-  }
+.navbar li a:hover {
+  text-decoration: underline;
+}
 
   /* Huvudinnehåll på sidorna */
   .main-content {
