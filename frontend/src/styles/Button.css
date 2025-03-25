@@ -1,0 +1,26 @@
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    font-family: 'Uncial Antiqua', serif;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  /* Hover och active states */
+  .button:hover {
+    background-color: #a52a2a;
+    transform: translateY(-2px);
+  }
+  
+  .button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px var(--shadow-color);
+  }
+  
