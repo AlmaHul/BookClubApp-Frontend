@@ -1,4 +1,3 @@
-
 .reviews-page {
     width: 60%;
     margin: 20px auto;
@@ -82,3 +81,51 @@
 }
 
 
+
+
+
+.create-review-page {
+    padding: 20px;
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin: 15px;
+    text-align:left;
+}
+label {
+
+}
+
+input,
+textarea {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+button.submit-review-button {
+    padding: 10px 20px;
+    background-color: #800080;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.submit-review-button:hover {
+    background-color: #c8a2c8;
+}

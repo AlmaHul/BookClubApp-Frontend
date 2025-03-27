@@ -1,18 +1,28 @@
 import React from 'react';
 import "../styles/ReviewsPage.css";
+import { Link } from 'react-router-dom';
 
 const ReviewsPage = () => {
     // Här hårdkodar vi en recension
     const reviews = [
         {
             id: 1,
-            title: "Test Boktitel",
-            author: "Test Author",
+            title: "Boktitel",
+            author: "Author",
             comment: "Det här är en testkommentar för att visa hur recensionen ser ut. Jag tycker att denna bok var fantastisk och mycket intressant att läsa. Rekommenderas!Det här är en testkommentar för att visa hur recensionen ser ut. Jag tycker att denna bok var fantastisk och mycket intressant att läsa. Rekommenderas!",
-            user: "Test User",
+            user: "Username",
             rating: 5,
             created_at: "2025-03-27"
-        }
+        },
+    {
+            id: 2,
+            title: "Boktitel",
+            author: "Author",
+            comment: "Det här är en testkommentar för att visa hur recensionen ser ut. Jag tycker att denna bok var fantastisk och mycket intressant att läsa. Rekommenderas!Det här är en testkommentar för att visa hur recensionen ser ut. Jag tycker att denna bok var fantastisk och mycket intressant att läsa. Rekommenderas!",
+            user: "Username",
+            rating: 5,
+            created_at: "2025-03-27"
+        },
     ];
 
     const handleCreateReview = () => {
@@ -23,9 +33,9 @@ const ReviewsPage = () => {
     return (
         <div className="reviews-page">
             {/* Knapp för att skapa en recension */}
-           <a href="#" className="create-review-link" onClick={handleCreateReview}>
-    Write a review
-</a>
+       <Link to="/create-review" className="create-review-link">
+                Write a review
+            </Link>
 
             {/* Recensioner */}
             <div className="reviews-container">
@@ -34,19 +44,19 @@ const ReviewsPage = () => {
                         <div className="review-header">
                             <div className="review-left">
                                 <h2 className="review-title">{review.title}</h2>
-                                <p className="review-author"><strong>Författare:</strong> {review.author}</p>
+                                <p className="review-author"><strong></strong> {review.author}</p>
                             </div>
 
                             <div className="review-right">
-                                <p className="review-user"><strong>Användare:</strong> {review.user}</p>
-                                <p className="review-rating"><strong>Betyg:</strong> {review.rating}</p>
+                                <p className="review-user"><strong>User</strong>: {review.user}</p>
+                                <p className="review-rating"><strong>Rating:</strong> {review.rating}</p>
                             </div>
                         </div>
 
                         <p className="review-comment">{review.comment}</p>
 
                         <div className="review-created-at">
-                            <p><strong>Skapad:</strong> {review.created_at}</p>
+                            <p><strong>Created at:</strong> {review.created_at}</p>
                         </div>
                     </div>
                 ))}
