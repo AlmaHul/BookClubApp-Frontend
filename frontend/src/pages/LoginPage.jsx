@@ -1,54 +1,42 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
 
-const LoginPage = () => {
+function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-    });
-
-    const data = await response.json();
-    if (response.ok) {
-      localStorage.setItem("token", data.token);
-      alert("Login successful!");
-      navigate("/profile");
-    } else {
-      alert(data.error || "Invalid credentials.");
+    try {
+      const res = await axios.post("http://127.0.0.1:5000/api/auth/login", {
+        username,
+        password
+      });
+      localStorage.setItem("token", res.data.token);
+      setMessage(res.data.message);
+      navigate("/home"); // Gå till HomePage vid lyckad login
+    } catch (err) {
+      setMessage("Login failed: " + (err.response?.data?.error || "Unknown error"));
     }
   };
 
   return (
-    <form onSubmit={handleLogin}>
+    <div>
       <h2>Login</h2>
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        required
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        required
-      />
-      <button type="submit">Login</button>
+      <form onSubmit={handleLogin}>
+        <input placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <button type="submit">Login</button>
+      </form>
+      <p>{message}</p>
       <p>
-        Don’t have an account? <a href="/register">Register</a>
+        Don't have an account? <Link to="/register">Register here</Link>
       </p>
-    </form>
+    </div>
   );
-};
+}
 
 export default LoginPage;
