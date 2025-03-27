@@ -1,0 +1,124 @@
+/* src/styles/main.css */
+
+/* Reset / bas */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Grundstil för body */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+  }
+
+  /* Lila header (Header.js) */
+  .header {
+    background-color: #5c2782; /* lila */
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+
+  .header-left {
+    font-size: 1.6rem;
+    font-weight: bold;
+  }
+
+  /* Menylänkar i headern */
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navbar li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+}
+
+.navbar li a:hover {
+  text-decoration: underline;
+}
+
+  /* Huvudinnehåll på sidorna */
+  .main-content {
+    padding: 2rem;
+  }
+
+  .box {
+    background: #fff;
+    border-radius: 4px;
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+
+/* LOGIN PAGE STYLING */
+.login-container {
+  max-width: 400px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.login-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #5c2782;
+}
+
+.login-form input {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #5c2782;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-form button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+.message {
+  margin-top: 1rem;
+  text-align: center;
+  color: red;
+}
+
+/* Sparkling bakgrund (lite diskret glitter) */
+.sparkle-bg {
+  background: linear-gradient(135deg, #ffffff, #fdf2ff);
+  background-image: url('https://www.transparenttextures.com/patterns/stardust.png'); /* Lätt glitter-textur */
+  background-repeat: repeat;
+  background-size: 300px 300px;
+  animation: sparkleMove 20s linear infinite;
+}
+
+@keyframes sparkleMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 1000px 1000px;
+  }
+}

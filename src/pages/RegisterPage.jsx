@@ -13,10 +13,9 @@ function RegisterPage() {
     try {
       const res = await axios.post("http://127.0.0.1:5000/api/auth/register", {
         username,
-        password
+        password,
       });
       setMessage(res.data.message);
-      // Direkt vidare till login-sidan efter lyckad registrering
       setTimeout(() => {
         navigate("/");
       }, 1500);
@@ -26,16 +25,25 @@ function RegisterPage() {
   };
 
   return (
-    <div>
-      <h2>Register</h2>
-      <form onSubmit={handleRegister}>
-        <input placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+    <div className="login-container sparkle-bg">
+      <h2 className="login-title">💫 Join the Book Club 💫</h2>
+      <form onSubmit={handleRegister} className="login-form">
+        <input
+          placeholder="📚 Choose a username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="🔒 Choose a password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <button type="submit">Register</button>
       </form>
-      <p>{message}</p>
-      <p>
-        Already have an account? <Link to="/">Login here</Link>
+      <p className="message">{message}</p>
+      <p style={{ textAlign: "center", marginTop: "1rem" }}>
+        Already a member? <Link to="/">Login here ✨</Link>
       </p>
     </div>
   );

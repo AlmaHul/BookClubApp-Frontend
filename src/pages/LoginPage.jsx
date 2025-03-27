@@ -13,27 +13,36 @@ function LoginPage() {
     try {
       const res = await axios.post("http://127.0.0.1:5000/api/auth/login", {
         username,
-        password
+        password,
       });
       localStorage.setItem("token", res.data.token);
       setMessage(res.data.message);
-      navigate("/home"); // Gå till HomePage vid lyckad login
+      navigate("/home");
     } catch (err) {
       setMessage("Login failed: " + (err.response?.data?.error || "Unknown error"));
     }
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <input placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+    <div className="login-container sparkle-bg">
+      <h2 className="login-title">✨ Welcome to the Book Club ✨</h2>
+      <form onSubmit={handleLogin} className="login-form">
+        <input
+          placeholder="📚 Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="🔒 Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <button type="submit">Login</button>
       </form>
-      <p>{message}</p>
-      <p>
-        Don't have an account? <Link to="/register">Register here</Link>
+      <p className="message">{message}</p>
+      <p style={{ textAlign: "center", marginTop: "1rem" }}>
+        Not a member yet? <Link to="/register">Register here 💫</Link>
       </p>
     </div>
   );
