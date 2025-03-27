@@ -1,0 +1,84 @@
+
+.reviews-page {
+    width: 60%;
+    margin: 20px auto;
+}
+
+.create-review-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color:  #c8a2c8;
+    color: white;
+    text-decoration: none; /* Tar bort understrykningen */
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+.create-review-link:hover {
+    background-color: #800080;
+    transform: translateY(-2px); /* Ger en liten effekt när man hovrar över länken */
+}
+
+.reviews-container {
+    margin-top: 20px;
+}
+
+.review-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.review-left {
+    flex: 1;
+    padding-right: 20px;
+    text-align: left;
+}
+
+.review-right {
+    flex: 1;
+    text-align: right;
+}
+
+.review-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.review-author {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.review-user,
+.review-rating {
+    margin-bottom: 5px;
+}
+
+.review-comment {
+    font-size: 16px;
+    margin-bottom: 15px;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.review-created-at {
+    font-size: 14px;
+    color: #777;
+    text-align: center;
+}
+
+
