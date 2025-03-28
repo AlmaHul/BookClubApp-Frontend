@@ -1,51 +1,63 @@
-import { useState } from "react";
-import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { saveToken } from '../auth/authService';
 
-function LoginPage() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
+const LoginPage = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
     try {
-      const res = await axios.post("http://127.0.0.1:5000/api/auth/login", {
-        username,
-        password,
+      const response = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
       });
-      localStorage.setItem("token", res.data.token);
-      setMessage(res.data.message);
-      navigate("/home");
+
+      if (response.ok) {
+        const data = await response.json();
+        saveToken(data.token); // 🧠 Spara token i localStorage
+        navigate('/');         // 🔁 Redirect till startsidan
+      } else {
+        const errorData = await response.json();
+        setError(errorData.message || 'Inloggning misslyckades');
+      }
     } catch (err) {
-      setMessage("Login failed: " + (err.response?.data?.error || "Unknown error"));
+      setError('Något gick fel. Försök igen.');
     }
   };
 
   return (
-    <div className="login-container sparkle-bg">
-      <h2 className="login-title">✨ Welcome to the Book Club ✨</h2>
-      <form onSubmit={handleLogin} className="login-form">
+    <div className="p-8 max-w-md mx-auto">
+      <h2 className="text-2xl font-bold mb-4">Logga in</h2>
+      <form onSubmit={handleLogin} className="flex flex-col gap-4">
         <input
-          placeholder="📚 Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          type="email"
+          placeholder="E-post"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          className="border p-2 rounded"
         />
         <input
           type="password"
-          placeholder="🔒 Password"
+          placeholder="Lösenord"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
+          className="border p-2 rounded"
         />
-        <button type="submit">Login</button>
+        {error && <p className="text-red-600">{error}</p>}
+        <button type="submit" className="bg-pink-500 text-white py-2 rounded hover:bg-pink-600">
+          Logga in
+        </button>
       </form>
-      <p className="message">{message}</p>
-      <p style={{ textAlign: "center", marginTop: "1rem" }}>
-        Not a member yet? <Link to="/register">Register here 💫</Link>
-      </p>
     </div>
   );
-}
+};
 
 export default LoginPage;

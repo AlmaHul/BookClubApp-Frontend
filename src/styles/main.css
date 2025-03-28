@@ -1,77 +1,120 @@
-/* src/styles/main.css */
+/* =============================
+   🌟 GLOBAL RESET & GRUNDLÄGGANDE STILAR
+============================= */
 
-/* Reset / bas */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  /* Grundstil för body */
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    color: #333;
-  }
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #fdf8ff;
+  color: #333;
+  line-height: 1.6;
+}
 
-  /* Lila header (Header.js) */
-  .header {
-    background-color: #5c2782; /* lila */
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-  }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
-  .header-left {
-    font-size: 1.6rem;
-    font-weight: bold;
-  }
+/* =============================
+   🎀 HEADER / NAVBAR
+============================= */
 
-  /* Menylänkar i headern */
+.header {
+  background-color: #5c2782; /* lila */
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-left {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
 .navbar ul {
   list-style: none;
   display: flex;
   gap: 1.5rem;
 }
 
-.navbar li a {
-  text-decoration: none;
-  color: #fff;
+.nav-button {
   font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  color: #fff;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
-.navbar li a:hover {
-  text-decoration: underline;
+.nav-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
-  /* Huvudinnehåll på sidorna */
-  .main-content {
-    padding: 2rem;
-  }
+.nav-button.active {
+  background-color: #fff;
+  color: #5c2782;
+}
 
-  .box {
-    background: #fff;
-    border-radius: 4px;
-    padding: 1rem;
-    margin-top: 1rem;
-  }
+.logout-button {
+  background-color: #fff;
+  color: #5c2782;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
 
-/* LOGIN PAGE STYLING */
+.logout-button:hover {
+  background-color: #f3e0ff;
+  color: #3e1d58;
+}
+
+/* =============================
+   🧾 SIDLAYOUT
+============================= */
+
+.main-content {
+  padding: 2rem;
+}
+
+.box {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* =============================
+   🗝️ LOGIN-FORM STYLING
+============================= */
+
 .login-container {
   max-width: 400px;
   margin: 4rem auto;
   padding: 2rem;
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
 
 .login-title {
   text-align: center;
   margin-bottom: 1.5rem;
   color: #5c2782;
+  font-size: 1.8rem;
+  font-weight: bold;
 }
 
 .login-form input {
@@ -80,7 +123,8 @@
   margin-bottom: 1rem;
   padding: 0.75rem;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 1rem;
 }
 
 .login-form button {
@@ -90,8 +134,13 @@
   color: white;
   font-weight: bold;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.login-form button:hover {
+  background-color: #441c63;
 }
 
 .login-form button:disabled {
@@ -105,10 +154,13 @@
   color: red;
 }
 
-/* Sparkling bakgrund (lite diskret glitter) */
+/* =============================
+   ✨ GLITTEREFFEKTER (diskret och drömmigt)
+============================= */
+
 .sparkle-bg {
   background: linear-gradient(135deg, #ffffff, #fdf2ff);
-  background-image: url('https://www.transparenttextures.com/patterns/stardust.png'); /* Lätt glitter-textur */
+  background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
   background-repeat: repeat;
   background-size: 300px 300px;
   animation: sparkleMove 20s linear infinite;
