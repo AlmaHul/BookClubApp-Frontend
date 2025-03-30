@@ -15,9 +15,18 @@ export const removeToken = () => {
   localStorage.removeItem(TOKEN_KEY);
 };
 
-// Är användaren inloggad?
-export const isLoggedIn = () => {
-  return !!getToken();
+// Dekoda token (t.ex. för att hämta användarnamn eller roller)
+export const decodeToken = () => {
+  const token = getToken();
+  if (!token) return null;
+
+  try {
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    return payload;
+  } catch (err) {
+    console.error("Misslyckades att dekoda token:", err);
+    return null;
+  }
 };
 
 // Headers för skyddade API-anrop

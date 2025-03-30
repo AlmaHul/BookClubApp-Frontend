@@ -1,101 +1,92 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthProvider';
+import { Menu, X } from 'lucide-react'; // Ikoner – kräver att du har lucide-react installerat
 
 const Navbar = () => {
   const { isLoggedIn, logout } = useAuth();
   const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogout = () => {
     logout();
     navigate('/login');
+    setMenuOpen(false);
   };
 
-  return (
-    <header className="header">
-      {/* Vänster: Titel */}
-      <div className="header-left">📚 BOOK CLUB</div>
+  const navLinkClass = ({ isActive }) =>
+    isActive
+      ? 'text-pink-200 underline'
+      : 'text-white hover:text-pink-200';
 
-      {/* Höger: Navigation */}
-      <nav className="navbar">
-        <ul>
-          {isLoggedIn ? (
-            <>
-              <li>
-                <NavLink
-                  to="/"
-                  className={({ isActive }) =>
-                    isActive ? 'nav-button active' : 'nav-button'
-                  }
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/books"
-                  className={({ isActive }) =>
-                    isActive ? 'nav-button active' : 'nav-button'
-                  }
-                >
-                  Books
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/profile"
-                  className={({ isActive }) =>
-                    isActive ? 'nav-button active' : 'nav-button'
-                  }
-                >
-                  Profile
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/reviews"
-                  className={({ isActive }) =>
-                    isActive ? 'nav-button active' : 'nav-button'
-                  }
-                >
-                  Reviews
-                </NavLink>
-              </li>
-              <li>
+  return (
+    <header className="bg-pink-500 shadow-md">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Vänster: Titel */}
+          <div className="text-white font-bold text-xl flex items-center">
+            📚 BOOK CLUB
+          </div>
+
+          {/* Höger: Menyknapp (mobil) */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="text-white focus:outline-none"
+            >
+              {menuOpen ? <X /> : <Menu />}
+            </button>
+          </div>
+
+          {/* Desktopmeny */}
+          <nav className="hidden md:flex space-x-6 items-center">
+            {isLoggedIn ? (
+              <>
+                <NavLink to="/" className={navLinkClass}>Home</NavLink>
+                <NavLink to="/books" className={navLinkClass}>Books</NavLink>
+                <NavLink to="/profile" className={navLinkClass}>Profile</NavLink>
+                <NavLink to="/reviews" className={navLinkClass}>Reviews</NavLink>
                 <button
                   onClick={handleLogout}
-                  className="nav-button logout-button"
+                  className="text-white hover:text-pink-200"
                 >
                   Logga ut
                 </button>
-              </li>
+              </>
+            ) : (
+              <>
+                <NavLink to="/login" className={navLinkClass}>Logga in</NavLink>
+                <NavLink to="/register" className={navLinkClass}>Registrera</NavLink>
+              </>
+            )}
+          </nav>
+        </div>
+      </div>
+
+      {/* Mobilmeny */}
+      {menuOpen && (
+        <div className="md:hidden bg-pink-400 px-4 py-3 space-y-2">
+          {isLoggedIn ? (
+            <>
+              <NavLink to="/" onClick={() => setMenuOpen(false)} className={navLinkClass}>Home</NavLink>
+              <NavLink to="/books" onClick={() => setMenuOpen(false)} className={navLinkClass}>Books</NavLink>
+              <NavLink to="/profile" onClick={() => setMenuOpen(false)} className={navLinkClass}>Profile</NavLink>
+              <NavLink to="/reviews" onClick={() => setMenuOpen(false)} className={navLinkClass}>Reviews</NavLink>
+              <button
+                onClick={handleLogout}
+                className="text-white hover:text-pink-200 block"
+              >
+                Logga ut
+              </button>
             </>
           ) : (
             <>
-              <li>
-                <NavLink
-                  to="/login"
-                  className={({ isActive }) =>
-                    isActive ? 'nav-button active' : 'nav-button'
-                  }
-                >
-                  Logga in
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/register"
-                  className={({ isActive }) =>
-                    isActive ? 'nav-button active' : 'nav-button'
-                  }
-                >
-                  Registrera
-                </NavLink>
-              </li>
+              <NavLink to="/login" onClick={() => setMenuOpen(false)} className={navLinkClass}>Logga in</NavLink>
+              <NavLink to="/register" onClick={() => setMenuOpen(false)} className={navLinkClass}>Registrera</NavLink>
             </>
           )}
-        </ul>
-      </nav>
+        </div>
+      )}
     </header>
   );
 };

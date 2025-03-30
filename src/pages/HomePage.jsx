@@ -1,3 +1,5 @@
+// OBS: Placeholder HomePage – stil & innehåll utvecklas av [Ali]
+
 import React from 'react';
 import { useAuth } from '../auth/AuthProvider';
 
