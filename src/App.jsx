@@ -1,23 +1,27 @@
 import { Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import HomePage from './pages/HomePage';
 import BooksPage from './pages/BooksPage';
+import Navbar from './components/Navbar';
+import HomePage from './pages/HomePage';
 import ProfilePage from './pages/ProfilePage';
 import ReviewsPage from './pages/ReviewsPage';
-import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
+  const token = localStorage.getItem("token");
+
   return (
     <>
-      <Navbar />
+      {/* Show Navbar only if user is logged in */}
+      {token && <Navbar />}
+
       <Routes>
-        {/* Offentliga sidor */}
+        {/* Public routes */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
 
-        {/* Skyddade sidor */}
+        {/* Protected routes */}
         <Route
           path="/"
           element={

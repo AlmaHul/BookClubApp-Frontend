@@ -11,7 +11,7 @@ function RegisterPage() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://127.0.0.1:5000/api/auth/register", {
+      const res = await axios.post("http://127.0.0.1:8080/api/auth/register", {
         username,
         password,
       });
