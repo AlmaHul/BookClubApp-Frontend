@@ -28,7 +28,7 @@ const Navbar = () => {
             📚 BOOK CLUB
           </div>
 
-          {/* Höger: Menyknapp (mobil) */}
+          {/* Menyknapp (mobil och tablet) */}
           <div className="md:hidden">
             <button
               onClick={() => setMenuOpen(!menuOpen)}

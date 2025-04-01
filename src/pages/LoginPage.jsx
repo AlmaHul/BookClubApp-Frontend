@@ -3,63 +3,86 @@ import { useNavigate } from 'react-router-dom';
 import { saveToken } from '../auth/authService';
 
 const LoginPage = () => {
+  // States för användarnamn, lösenord och eventuella felmeddelanden
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Navigation-hanterare för att byta sida
 
   const handleLogin = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Förhindrar standard formulärbeteende
 
     try {
       const response = await fetch('http://127.0.0.1:8080/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ username, password }), // Skickar användarnamn och lösenord
       });
 
       if (response.ok) {
         const data = await response.json();
-        saveToken(data.token); // 🔐 Spara token i localStorage
-        navigate('/');         // ✅ Gå till startsidan
+        saveToken(data.token); // 🔐 Spara den mottagna token i localStorage
+        navigate('/');         // ✅ Om inloggningen lyckas, navigera till startsidan
       } else {
         const errorData = await response.json();
-        setError(errorData.message || 'Inloggning misslyckades');
+        setError(errorData.message || 'Inloggning misslyckades'); // Visar felmeddelande om login misslyckas
       }
     } catch (err) {
-      setError('Något gick fel. Försök igen.');
+      setError('Något gick fel. Försök igen.'); // Hanterar eventuella andra fel
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-pink-50 px-4">
-      <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-md">
-        <h2 className="text-3xl font-bold text-pink-600 mb-6 text-center">Logga in</h2>
+    // 1. Bakgrund med gradient, anpassad padding
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-violet-900 via-indigo-900 to-blue-950 px-4">
+      {/* 2. Centrerad vit box med rundade hörn, skuggning och bakgrundseffekt */}
+      <div className="w-full max-w-md bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-violet-200">
+        
+        {/* 3. Harry Potter-citat */}
+        <h1 className="text-xl text-center text-gray-600 italic mb-4">“Books turn Muggles into magic.”</h1>
+        
+        {/* 4. Stora rubriken */}
+        <h2 className="text-3xl font-bold text-violet-700 mb-6 text-center">Welcome to the Book Club ✨</h2>
+
+        {/* 5. Formulär för inloggning */}
         <form onSubmit={handleLogin} className="flex flex-col gap-4">
+          
+          {/* 6. Användarnamn fält */}
           <input
             type="text"
-            placeholder="Användarnamn"
+            placeholder="Username"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setUsername(e.target.value)} // Uppdaterar användarnamn
             required
-            className="border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+            className="border border-violet-200 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500"
           />
+          
+          {/* 7. Lösenord fält */}
           <input
             type="password"
-            placeholder="Lösenord"
+            placeholder="Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)} // Uppdaterar lösenord
             required
-            className="border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+            className="border border-violet-200 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500"
           />
-          {error && <p className="text-red-600 text-sm">{error}</p>}
+          
+          {/* 8. Felmeddelande */}
+          {error && <p className="text-red-500 text-sm">{error}</p>}
+
+          {/* 9. Logga in-knapp */}
           <button
             type="submit"
-            className="bg-pink-500 hover:bg-pink-600 text-white py-2 rounded-md font-semibold transition duration-300"
+            className="bg-gradient-to-r from-pink-500 to-yellow-400 hover:from-pink-600 hover:to-yellow-500 text-white py-3 rounded-lg font-semibold shadow-md transition duration-300"
           >
-            Logga in
+            Log In
           </button>
         </form>
+
+        {/* 10. Länk till register-sidan */}
+        <p className="mt-4 text-center text-sm text-gray-600">
+          Don’t have an account? <a href="/register" className="text-violet-500 hover:underline">Register here</a>
+        </p>
       </div>
     </div>
   );
