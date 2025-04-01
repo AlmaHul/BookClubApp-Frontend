@@ -1,39 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "../styles/ReviewsPage.css";
 import { Link } from 'react-router-dom';
 
 const ReviewsPage = () => {
-    // Här hårdkodar vi en recension
-    const reviews = [
-        {
-            id: 1,
-            title: "Boktitel",
-            author: "Author",
-            comment: "Det här är en testkommentar för att visa hur recensionen ser ut. Jag tycker att denna bok var fantastisk och mycket intressant att läsa. Rekommenderas!Det här är en testkommentar för att visa hur recensionen ser ut. Jag tycker att denna bok var fantastisk och mycket intressant att läsa. Rekommenderas!",
-            user: "Username",
-            rating: 5,
-            created_at: "2025-03-27"
-        },
-    {
-            id: 2,
-            title: "Boktitel",
-            author: "Author",
-            comment: "Det här är en testkommentar för att visa hur recensionen ser ut. Jag tycker att denna bok var fantastisk och mycket intressant att läsa. Rekommenderas!Det här är en testkommentar för att visa hur recensionen ser ut. Jag tycker att denna bok var fantastisk och mycket intressant att läsa. Rekommenderas!",
-            user: "Username",
-            rating: 5,
-            created_at: "2025-03-27"
-        },
-    ];
+    const [reviews, setReviews] = useState([]); // State för att lagra recensionerna
+    const [loading, setLoading] = useState(true); // State för att hantera laddning
 
-    const handleCreateReview = () => {
-        // Här kan du lägga till logik för att navigera till en sida för att skriva en recension
-        console.log('Navigating to create review page...');
+    // Funktion för att hämta recensioner från backend
+    const fetchReviews = async () => {
+        try {
+            const response = await fetch('/api/review');
+            if (response.ok) {
+                const data = await response.json();
+                setReviews(data.reviews);  // Sätt recensionerna i state
+            } else {
+                console.error("Failed to fetch reviews:", response.statusText);
+            }
+        } catch (error) {
+            console.error("Error fetching reviews:", error);
+        } finally {
+            setLoading(false); // När hämtingen är klar (lyckad eller ej), sätt loading till false
+        }
     };
+
+    // Använd useEffect för att hämta recensionerna när komponenten laddas
+    useEffect(() => {
+        fetchReviews();
+    }, []);
+
+    // Om recensionerna fortfarande laddas, visa en laddningsindikator
+    if (loading) {
+        return <div>Loading reviews...</div>;
+    }
 
     return (
         <div className="reviews-page">
             {/* Knapp för att skapa en recension */}
-       <Link to="/create-review" className="create-review-link">
+            <Link to="/create-review" className="create-review-link">
                 Write a review
             </Link>
 
@@ -44,7 +47,7 @@ const ReviewsPage = () => {
                         <div className="review-header">
                             <div className="review-left">
                                 <h2 className="review-title">{review.title}</h2>
-                                <p className="review-author"><strong></strong> {review.author}</p>
+                                <p className="review-author"><strong>Author:</strong> {review.author}</p>
                             </div>
 
                             <div className="review-right">
