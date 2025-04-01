@@ -51,7 +51,7 @@ const ReviewsPage = () => {
                             </div>
 
                             <div className="review-right">
-                                <p className="review-user"><strong>User</strong>: {review.user}</p>
+                                <p className="review-user"><strong>User</strong>: {review.user.username}</p>
                                 <p className="review-rating"><strong>Rating:</strong> {review.rating}</p>
                             </div>
                         </div>

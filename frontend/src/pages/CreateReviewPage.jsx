@@ -97,6 +97,12 @@ const CreateReviewPage = () => {
                 <button type="submit" className="submit-review-button">Submit</button>
             </form>
         </div>
+
+        <div className="my-reviews">
+            <h2>My book reviews </h2>
+
+
+            </div>
     );
 };
 
