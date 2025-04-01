@@ -13,7 +13,7 @@ function BooksPage() {
   // State for book currently being edited
   const [editBook, setEditBook] = useState(null);
   // State for book currently being viewed in detail
-  const [viewBook, setViewBook] = useState(null);
+  //const [viewBook, setViewBook] = useState(null);
   // Retrieve JWT token from local storage
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
@@ -207,6 +207,7 @@ function BooksPage() {
                     </button>
                     <button onClick={() => setEditBook(null)} className="ml-2 text-sm text-red-500">Cancel</button>
                   </div>
+                  /*
                 ) : viewBook?.id === book.id ? (
                   // View mode
                   <div>
@@ -215,6 +216,8 @@ function BooksPage() {
                     <p className="text-sm italic mb-2">{book.description}</p>
                     <button onClick={() => setViewBook(null)} className="text-sm text-blue-500 mt-2">Close</button>
                   </div>
+                  */
+
                 ) : (
                   // Normal mode
                   <>
@@ -234,12 +237,14 @@ function BooksPage() {
                       >
                         🗑️ Delete
                       </button>
+                      {/* 
                       <button
                         onClick={() => setViewBook(book)}
                         className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded-md text-sm"
                       >
                         🔍 View
                       </button>
+                      */}
                     </div>
                   </>
                 )}
