@@ -42,7 +42,7 @@ function BooksPage() {
   const handleSearch = async () => {
     setMessage("");
     try {
-      const res = await fetch("http://localhost:8080/api/books/search-book-from-libris", {
+      const res = await fetch("http://localhost:8080/api/books/search", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -69,7 +69,7 @@ function BooksPage() {
   const handleAddBook = async (book) => {
     setMessage("");
     try {
-      const res = await fetch("http://localhost:8080/api/books/add-from-selection", {
+      const res = await fetch("http://localhost:8080/api/books/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -77,17 +77,18 @@ function BooksPage() {
         },
         body: JSON.stringify(book),
       });
-
+  
+      const result = await res.json(); 
+  
       if (!res.ok) {
-        const errorData = await res.json();
-        setMessage("❌ " + (errorData.error || "Failed to add book"));
+        setMessage("❌ " + (result.error || "Failed to add book"));
         return;
       }
-
-      const result = await res.json();
+  
       setMessage("✅ Book added: " + result.book.title);
-      fetchMyBooks(); // Refresh list
+      fetchMyBooks(); // 🔁 Refresh list
     } catch (err) {
+      console.error("Error adding book:", err);
       setMessage("❌ Error adding book");
     }
   };
