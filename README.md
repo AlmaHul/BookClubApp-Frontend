@@ -1,4 +1,4 @@
-3. # ✨ BookClubApp Frontend (React + Vite)
+ # ✨ BookClubApp Frontend (React + Vite)
 
 Detta är frontend-delen av BookClubApp – en livlig och festlig bokklubbsapp byggd med React och Vite.
 ## 🚀 Kom igång
