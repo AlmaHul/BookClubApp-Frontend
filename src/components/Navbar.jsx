@@ -55,8 +55,8 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <NavLink to="/login" className={navLinkClass}>Logga in</NavLink>
-                <NavLink to="/register" className={navLinkClass}>Registrera</NavLink>
+                <NavLink to="/login" className={navLinkClass}>Login</NavLink>
+                <NavLink to="/register" className={navLinkClass}>Register</NavLink>
               </>
             )}
           </nav>
@@ -76,13 +76,13 @@ const Navbar = () => {
                 onClick={handleLogout}
                 className="text-white hover:text-pink-200 block"
               >
-                Logga ut
+                Logout
               </button>
             </>
           ) : (
             <>
-              <NavLink to="/login" onClick={() => setMenuOpen(false)} className={navLinkClass}>Logga in</NavLink>
-              <NavLink to="/register" onClick={() => setMenuOpen(false)} className={navLinkClass}>Registrera</NavLink>
+              <NavLink to="/login" onClick={() => setMenuOpen(false)} className={navLinkClass}>Login</NavLink>
+              <NavLink to="/register" onClick={() => setMenuOpen(false)} className={navLinkClass}>Register</NavLink>
             </>
           )}
         </div>
