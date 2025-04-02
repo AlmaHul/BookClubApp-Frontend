@@ -29,6 +29,7 @@ const Navbar = () => {
           </div>
 
           {/* Menyknapp (mobil och tablet) */}
+          {/*
           <div className="md:hidden">
             <button
               onClick={() => setMenuOpen(!menuOpen)}
@@ -37,7 +38,7 @@ const Navbar = () => {
               {menuOpen ? <X /> : <Menu />}
             </button>
           </div>
-
+          */}
           {/* Desktopmeny */}
           <nav className="hidden md:flex space-x-6 items-center">
             {isLoggedIn ? (
@@ -50,7 +51,7 @@ const Navbar = () => {
                   onClick={handleLogout}
                   className="text-white hover:text-pink-200"
                 >
-                  Logga ut
+                  Logout
                 </button>
               </>
             ) : (
@@ -64,6 +65,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobilmeny */}
+      {/* 
       {menuOpen && (
         <div className="md:hidden bg-pink-400 px-4 py-3 space-y-2">
           {isLoggedIn ? (
@@ -86,7 +88,7 @@ const Navbar = () => {
             </>
           )}
         </div>
-      )}
+      )}*/}
     </header>
   );
 };

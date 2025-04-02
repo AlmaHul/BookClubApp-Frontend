@@ -7,14 +7,15 @@ import HomePage from './pages/HomePage';
 import ProfilePage from './pages/ProfilePage';
 import ReviewsPage from './pages/ReviewsPage';
 import ProtectedRoute from './components/ProtectedRoute';
+import { useAuth } from './auth/AuthProvider';
 
 function App() {
-  const token = localStorage.getItem("token");
+  const { isLoggedIn } = useAuth();
 
   return (
     <>
       {/* Show Navbar only if user is logged in */}
-      {token && <Navbar />}
+      {isLoggedIn && <Navbar />}
 
       <Routes>
         {/* Public routes */}
