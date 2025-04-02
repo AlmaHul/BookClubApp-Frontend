@@ -27,11 +27,11 @@ const HomePage = () => {
   return (
       <div className="home-page">
       <div className="chat-box">
-        <h2>Ask about book tips</h2>
+        <h2>Ask AI about book tips</h2>
         <form onSubmit={handleSubmit} className="chat-form">
           <input
             type="text"
-            placeholder="..."
+            placeholder="Write something..."
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             required
