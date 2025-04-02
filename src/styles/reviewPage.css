@@ -16,13 +16,20 @@ body {
   min-height: 100vh;
   text-align: center;
 }
-
 /* Title styling */
 .book-review {
   font-size: 2rem;
   font-weight: bold;
   color: #333;
   margin-bottom: 20px;
+}
+
+.review-add-my {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px; /* Maximera bredden om du vill att den ska vara responsiv */
+  margin-bottom: 20px; /* Lite avstånd från innehållet nedanför */
 }
 
 /* Button styling */
@@ -73,18 +80,24 @@ body {
   background-color: white;
 }
 
-/* Left and right headers */
+.review-header {
+  display: flex;
+  justify-content: space-between; /* För att placera de två sektionerna på varsin sida */
+  align-items: center; /* Vertikal justering av innehållet */
+  width: 100%; /* Se till att hela bredden används */
+  margin-bottom: 12px; /* Avstånd mellan rubriken och innehållet nedanför */
+}
+
 .left-header {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: column; /* För att hålla boktitel och författare i vertikal ordning */
+  align-items: flex-start; /* Justera till vänster */
 }
 
 .right-header {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  margin-left: auto;
+  flex-direction: column; /* För att hålla username och rating i vertikal ordning */
+  align-items: flex-end; /* Justera till höger */
 }
 
 /* Book title and author */
@@ -217,3 +230,4 @@ body {
   height: 150px;
   resize: vertical;
 }
+

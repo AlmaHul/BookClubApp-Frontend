@@ -58,6 +58,8 @@ useEffect(() => {
   return (
     <div className="main-content">
       <h1 className="book-review">Book reviews</h1>
+
+      <div className="review-add-my">
       <button
         onClick={handleAddReview}
         className="add-review"
@@ -70,8 +72,7 @@ useEffect(() => {
             >
                 My Reviews
             </button>
-
-
+            </div>
 
       <div className="review-box">
         {/* Visa alla recensioner som kort */}
@@ -81,6 +82,7 @@ useEffect(() => {
               key={review.id}
               className="mb-6 p-4 border rounded-lg shadow-md bg-white"
             >
+            <div className="review-header">
             <div className="left-header">
               <h3 className="book-title">{review.title}</h3>
               <h3 className="author">By: {review.author}</h3>
@@ -90,6 +92,8 @@ useEffect(() => {
               <p className="text-gray-500">Username: {review.username || "Unknown"}</p>
               <p className="text-yellow-500 mt-2">Rating: ⭐ {review.rating}</p>
               </div>
+              </div>
+
               <div className="main-text">
               <p className="mt-2">{review.comment}</p>
               </div>
@@ -103,9 +107,10 @@ useEffect(() => {
           <p className="text-gray-500">No reviews available.</p>
         )}
       </div>
+
+
     </div>
   );
 };
 
 export default ReviewsPage;
-

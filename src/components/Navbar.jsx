@@ -49,21 +49,21 @@ const Navbar = () => {
       <NavLink to="/reviews" className={({ isActive }) => isActive ? 'active-link' : ''}>Reviews</NavLink>
     </>
   ) : (
-    <>
-      <NavLink to="/login" className={({ isActive }) => isActive ? 'active-link' : ''}>Logga in</NavLink>
-      <NavLink to="/register" className={({ isActive }) => isActive ? 'active-link' : ''}>Registrera</NavLink>
-    </>
+    // Här har vi tagit bort login och register länkarna helt
+    null
   )}
 </nav>
 
 
-      {/* Logga ut-knapp längst till höger */}
-      <button
-        onClick={handleLogout}
-        className="log-out"
-      >
-        Logga ut
-      </button>
+    {/* Logga ut-knapp längst till höger, endast synlig när användaren är inloggad */}
+{isLoggedIn && (
+  <button
+    onClick={handleLogout}
+    className="log-out"
+  >
+    Log out
+  </button>
+)}
     </div>
 
 
