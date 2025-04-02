@@ -1,0 +1,233 @@
+/* Global styling */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f7f7;
+}
+
+/* Center the main content */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+  text-align: center;
+}
+/* Title styling */
+.book-review {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.review-add-my {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px; /* Maximera bredden om du vill att den ska vara responsiv */
+  margin-bottom: 20px; /* Lite avstånd från innehållet nedanför */
+}
+
+/* Button styling */
+.add-review {
+  background-color: #d1c4e9; /* Light purple */
+  color: white;
+  font-size: 1rem;
+  font-style: italic;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.3s;
+}
+
+.add-review:hover {
+  background-color: #b39ddb; /* Slightly darker purple on hover */
+}
+
+/* Review box styling */
+.review-box {
+  width: 100%;
+  max-width: 800px;
+}
+
+.review-box .mb-6 {
+  margin-bottom: 24px;
+}
+
+.review-box .p-4 {
+  padding: 16px;
+}
+
+.review-box .border {
+  border: 1px solid #000; /* Thin black border */
+}
+
+.review-box .rounded-lg {
+  border-radius: 10px;
+}
+
+.review-box .shadow-md {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.review-box .bg-white {
+  background-color: white;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between; /* För att placera de två sektionerna på varsin sida */
+  align-items: center; /* Vertikal justering av innehållet */
+  width: 100%; /* Se till att hela bredden används */
+  margin-bottom: 12px; /* Avstånd mellan rubriken och innehållet nedanför */
+}
+
+.left-header {
+  display: flex;
+  flex-direction: column; /* För att hålla boktitel och författare i vertikal ordning */
+  align-items: flex-start; /* Justera till vänster */
+}
+
+.right-header {
+  display: flex;
+  flex-direction: column; /* För att hålla username och rating i vertikal ordning */
+  align-items: flex-end; /* Justera till höger */
+}
+
+/* Book title and author */
+.book-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.author {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 4px;
+}
+
+/* Username and rating */
+.text-gray-500 {
+  color: #6b7280; /* Gray color for text */
+}
+
+.text-yellow-500 {
+  color: #f59e0b; /* Yellow color for rating */
+}
+
+.mt-2 {
+  margin-top: 8px;
+}
+
+/* Main text */
+.main-text {
+  margin-top: 16px;
+  text-align: left;
+}
+
+/* Review timestamp */
+.text-gray-500 {
+  color: #6b7280;
+  margin-top: 12px;
+}
+
+/* No reviews available text */
+.text-gray-500 {
+  color: #6b7280;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+
+
+
+/* Styling för CreateReview*/
+
+
+/* Center the main content */
+.create-review-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+  text-align: center;
+}
+
+/* Title styling */
+.create-review-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Form styling */
+.create-review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.create-review-form input,
+.create-review-form textarea {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  color: #333;
+}
+
+.create-review-form input:focus,
+.create-review-form textarea:focus {
+  border-color: #d1c4e9; /* Light purple border on focus */
+  outline: none;
+}
+
+/* Button styling */
+.create-review-button {
+  background-color: #d1c4e9; /* Light purple */
+  color: white;
+  font-size: 1rem;
+  font-style: italic;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.create-review-button:hover {
+  background-color: #b39ddb; /* Slightly darker purple on hover */
+}
+
+/* Error message styling */
+.create-review-error {
+  color: #f44336; /* Red color for error messages */
+  font-size: 1rem;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+/* Adjust input fields */
+.create-review-form input[type="number"] {
+  width: 100%;
+}
+
+/* Adjust textarea */
+.create-review-form textarea {
+  height: 150px;
+  resize: vertical;
+}
+
