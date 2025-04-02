@@ -40,29 +40,30 @@ const Navbar = () => {
       </div>
 
       {/* Menylänkar för Desktop - centrerade */}
-      <nav className="menu-links">
-        {isLoggedIn ? (
-          <>
-            <NavLink to="/" className={navLinkClass}>Home</NavLink>
-            <NavLink to="/books" className={navLinkClass}>Books</NavLink>
-            <NavLink to="/profile" className={navLinkClass}>Profile</NavLink>
-            <NavLink to="/reviews" className={navLinkClass}>Reviews</NavLink>
-          </>
-        ) : (
-          <>
-            <NavLink to="/login" className={navLinkClass}>Logga in</NavLink>
-            <NavLink to="/register" className={navLinkClass}>Registrera</NavLink>
-          </>
-        )}
-      </nav>
+     <nav className="menu-links">
+  {isLoggedIn ? (
+    <>
+      <NavLink to="/" className={({ isActive }) => isActive ? 'active-link' : ''}>Home</NavLink>
+      <NavLink to="/books" className={({ isActive }) => isActive ? 'active-link' : ''}>Books</NavLink>
+      <NavLink to="/profile" className={({ isActive }) => isActive ? 'active-link' : ''}>Profile</NavLink>
+      <NavLink to="/reviews" className={({ isActive }) => isActive ? 'active-link' : ''}>Reviews</NavLink>
+    </>
+  ) : (
+    // Här har vi tagit bort login och register länkarna helt
+    null
+  )}
+</nav>
 
-      {/* Logga ut-knapp längst till höger */}
-      <button
-        onClick={handleLogout}
-        className="log-out"
-      >
-        Logga ut
-      </button>
+
+    {/* Logga ut-knapp längst till höger, endast synlig när användaren är inloggad */}
+{isLoggedIn && (
+  <button
+    onClick={handleLogout}
+    className="log-out"
+  >
+    Log out
+  </button>
+)}
     </div>
 
 

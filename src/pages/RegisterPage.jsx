@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import "../styles/login.css";  // För att hålla stilen konsistent
 
 function RegisterPage() {
   const [username, setUsername] = useState("");
@@ -25,9 +26,9 @@ function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-pink-50 px-4">
-      <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-xl text-center sparkle-bg">
-        <h2 className="text-3xl font-bold text-pink-600 mb-6">💫 Join the Book Club 💫</h2>
+<div className="main-content">
+      <div className="register-box">
+        <h2 className="register-text">💫 Join the Book Club </h2>
         <form onSubmit={handleRegister} className="flex flex-col gap-4">
           <input
             type="text"
@@ -35,7 +36,7 @@ function RegisterPage() {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
-            className="border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+            className="text-box"
           />
           <input
             type="password"
@@ -43,11 +44,11 @@ function RegisterPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+            className="text-box"
           />
           <button
             type="submit"
-            className="bg-pink-500 hover:bg-pink-600 text-white py-2 rounded-md font-semibold transition duration-300"
+            className="register-button"
           >
             Register
           </button>
@@ -57,12 +58,13 @@ function RegisterPage() {
         )}
         <p className="mt-6 text-sm">
           Already a member?{" "}
-          <Link to="/login" className="text-pink-600 hover:underline">
+          <Link to="/login" className="link-back">
             Login here ✨
           </Link>
         </p>
       </div>
-    </div>
+      </div>
+
   );
 }
 
