@@ -39,6 +39,14 @@
   list-style: none;
   padding-right: 120px;
 }
+/* Hover-effekt för individuella länkar */
+.menu-links a:hover {
+  text-decoration: underline;
+}
+/* Aktiva länkar blir svarta */
+.active-link {
+  color: black;  /* Gör den aktiva länken svart */
+}
 
 
 /* För mobilversionen */

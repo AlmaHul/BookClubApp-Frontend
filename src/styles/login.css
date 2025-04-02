@@ -1,0 +1,87 @@
+/* Centrerar login-formuläret på sidan */
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Täcker hela skärmen */
+  background-color: #f4f1f7; /* Ljuslila bakgrund */
+}
+
+/* Login-box stil */
+.login-box {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 350px;
+}
+
+/* Titel "Logga in" */
+.log-in {
+  font-size: 1.8rem;
+  color: #6c4f7d; /* Lila ton som matchar navbar */
+  margin-bottom: 20px;
+  font-family: 'Merriweather', serif;
+}
+
+/* Formuläret och dess element */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Lägger mellanrum mellan input, knapp och felmeddelande */
+}
+
+/* Textbox för input-fält */
+.text-box {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+/* Fokus-effekt på input */
+.text-box:focus {
+  border-color: #6c4f7d;
+  box-shadow: 0 0 5px rgba(108, 79, 125, 0.5);
+}
+
+/* Login-knapp */
+.login-button {
+  background-color: #6c4f7d;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #8e6fb9;
+}
+
+/* Registreringslänk */
+.register-link {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #6c4f7d;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsiv design för mindre skärmar */
+@media (max-width: 400px) {
+  .login-box {
+    width: 90%;
+    padding: 20px;
+  }
+}

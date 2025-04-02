@@ -3,6 +3,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import "../styles/reviewPage.css";  // För att hålla stilen konsistent
 
 const UpdateReviewPage = () => {
+    const { isLoggedIn, user } = useAuth();
+    console.log("Auth status:", isLoggedIn, "User:", user); // Debug-logg
+
     const { reviewId } = useParams(); // Hämta review ID från URL
     const [review, setReview] = useState({
         title: "",

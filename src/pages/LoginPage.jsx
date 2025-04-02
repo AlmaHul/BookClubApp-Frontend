@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthProvider';
+import "../styles/login.css";  // För att hålla stilen konsistent
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
@@ -41,9 +42,9 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-pink-50 px-4">
-      <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-md">
-        <h2 className="text-3xl font-bold text-pink-600 mb-6 text-center">Logga in</h2>
+    <div className="main-content">
+      <div className="login-box">
+        <h2 className="log-in">Logga in</h2>
         <form onSubmit={handleLogin} className="flex flex-col gap-4">
           <input
             type="text"
@@ -51,7 +52,7 @@ const LoginPage = () => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
-            className="border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+            className="text-box"
           />
           <input
             type="password"
@@ -59,15 +60,18 @@ const LoginPage = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+            className="text-box"
           />
           {error && <p className="text-red-600 text-sm">{error}</p>}
           <button
             type="submit"
-            className="bg-pink-500 hover:bg-pink-600 text-white py-2 rounded-md font-semibold transition duration-300"
+            className="login-button"
           >
             Logga in
           </button>
+          <p>
+  Har du inget konto? <a href="/register" className="register-link">Registrera dig här</a>
+</p>
         </form>
       </div>
     </div>
