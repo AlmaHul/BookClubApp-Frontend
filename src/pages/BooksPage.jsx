@@ -16,6 +16,7 @@ function BooksPage() {
   const [viewBook, setViewBook] = useState(null);
   // Retrieve JWT token from local storage
   const token = localStorage.getItem("token");
+  console.log("JWT Token:", token);
   const navigate = useNavigate();
 
   // Load user's books on first render
@@ -38,32 +39,38 @@ function BooksPage() {
     }
   };
 
-  // Handle search request for books using Libris API
-  const handleSearch = async () => {
-    setMessage("");
-    try {
-      const res = await fetch("http://localhost:8080/api/books/search-book-from-libris", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ title: searchTitle }),
-      });
+const handleSearch = async () => {
+  setMessage("");
+  try {
+    const res = await fetch("http://localhost:8080/api/books/search", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token ? `Bearer ${token}` : "",
+      },
+      body: JSON.stringify({ title: searchTitle }),
+    });
 
-      if (!res.ok) {
-        const errorData = await res.json();
-        setMessage("❌ " + (errorData.error || "Search failed"));
-        setSearchResults([]);
-        return;
-      }
+    console.log("API response status:", res.status); // 👈 Logga HTTP-statuskoden
 
-      const data = await res.json();
-      setSearchResults(data.results);
-    } catch (err) {
-      setMessage("❌ An error occurred during search");
+    const responseData = await res.json();
+    console.log("API response body:", responseData); // 👈 Logga API-svaret
+
+    if (!res.ok) {
+      setMessage("❌ " + (responseData.error || "Search failed"));
+      setSearchResults([]);
+      return;
     }
-  };
+
+    setSearchResults(responseData.results);
+  } catch (err) {
+    console.error("Fetch error:", err);
+    setMessage("❌ An error occurred during search");
+  }
+};
+
+
+
 
   // Add selected book from search results to user's collection
   const handleAddBook = async (book) => {
@@ -132,12 +139,12 @@ function BooksPage() {
 
   return (
       <div className="main-content">
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-      <div className="w-full max-w-3xl bg-white p-8 rounded-2xl shadow-xl text-center">
-        <h2 className="text-2xl font-bold text-purple-700 mb-6">📚 Search & Manage Your Books</h2>
+    <div className="book-page">
+
+        <h2 className="books-title">📚 Search & Manage Your Books</h2>
 
         {/* Search Input Section */}
-        <div className="flex flex-col gap-4 mb-6">
+        <div className="search-book">
           <input
             type="text"
             placeholder="📖 Enter exact book title"
@@ -147,7 +154,7 @@ function BooksPage() {
           />
           <button
             onClick={handleSearch}
-            className="bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-md font-semibold transition duration-300"
+            className="search-book"
           >
             🔍 Search
           </button>
@@ -158,9 +165,9 @@ function BooksPage() {
 
         {/* Search Results Section */}
         {searchResults.length > 0 && (
-          <div className="text-left mb-8">
+          <div className="results-box">
             <h3 className="text-lg font-semibold mb-3 text-purple-600">🎯 Exact Matches:</h3>
-            <ul className="space-y-4">
+            <ul className="list-book">
               {searchResults.map((book, i) => (
                 <li key={i} className="border rounded p-4 bg-gray-100 shadow-sm">
                   <p className="font-bold text-purple-800">{book.title}</p>
@@ -168,7 +175,7 @@ function BooksPage() {
                   <p className="text-sm italic mb-2">{book.description}</p>
                   <button
                     onClick={() => handleAddBook(book)}
-                    className="bg-green-500 hover:bg-green-600 text-white py-1 px-4 rounded-md text-sm transition"
+                    className="add-book"
                   >
                     ➕ Add this book
                   </button>
@@ -179,14 +186,14 @@ function BooksPage() {
         )}
 
         {/* My Books Section */}
-        <div className="text-left">
+        <div className="my-books-box">
           <h3 className="text-lg font-semibold mb-3 text-purple-600">📚 My Books:</h3>
           <ul className="space-y-4">
             {myBooks.map((book) => (
               <li key={book.id} className="border rounded p-4 bg-gray-50 shadow-sm">
                 {editBook?.id === book.id ? (
                   // Edit mode
-                  <div className="space-y-2">
+                  <div className="edit-box">
                     <input
                       value={editBook.title}
                       onChange={(e) => setEditBook({ ...editBook, title: e.target.value })}
@@ -247,7 +254,7 @@ function BooksPage() {
             ))}
           </ul>
 
-        </div>
+
       </div>
     </div>
     </div>
