@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { saveToken } from '../auth/authService';
+import { useAuth } from '../auth/AuthProvider';
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const { isLoggedIn, login } = useAuth();
+
+  useEffect(() => {
+  console.log("🟢 useEffect körs - isLoggedIn:", isLoggedIn);
+  if (isLoggedIn) {
+    console.log("✅ isLoggedIn är true! Navigerar till /");
+    navigate("/", { replace: true });
+  }
+}, [isLoggedIn, navigate]);
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -20,8 +30,7 @@ const LoginPage = () => {
 
       if (response.ok) {
         const data = await response.json();
-        saveToken(data.token); // 🔐 Spara token i localStorage
-        navigate('/');         // ✅ Gå till startsidan
+        login(data.token); // ✅ Uppdaterar auth state
       } else {
         const errorData = await response.json();
         setError(errorData.message || 'Inloggning misslyckades');
@@ -66,3 +75,4 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+

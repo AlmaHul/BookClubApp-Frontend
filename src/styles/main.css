@@ -2,6 +2,11 @@
    🌟 GLOBAL RESET & GRUNDLÄGGANDE STILAR
 ============================= */
 
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
 * {
   margin: 0;
   padding: 0;
@@ -14,71 +19,17 @@ body {
   color: #333;
   line-height: 1.6;
 }
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* =============================
-   🎀 HEADER / NAVBAR
-============================= */
-
-.header {
-  background-color: #5c2782; /* lila */
-  color: #fff;
+.main-content {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 1rem 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  padding: 20px;
+  min-height: 100vh;
+  text-align: center;
 }
 
-.header-left {
-  font-size: 1.6rem;
-  font-weight: bold;
-}
 
-.navbar ul {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
-
-.nav-button {
-  font-weight: 600;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  color: #fff;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.nav-button:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.nav-button.active {
-  background-color: #fff;
-  color: #5c2782;
-}
-
-.logout-button {
-  background-color: #fff;
-  color: #5c2782;
-  font-weight: bold;
-  border: none;
-  border-radius: 6px;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.logout-button:hover {
-  background-color: #f3e0ff;
-  color: #3e1d58;
-}
 
 /* =============================
    🧾 SIDLAYOUT

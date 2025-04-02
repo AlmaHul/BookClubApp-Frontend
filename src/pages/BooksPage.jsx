@@ -131,6 +131,7 @@ function BooksPage() {
   };
 
   return (
+      <div className="main-content">
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <div className="w-full max-w-3xl bg-white p-8 rounded-2xl shadow-xl text-center">
         <h2 className="text-2xl font-bold text-purple-700 mb-6">📚 Search & Manage Your Books</h2>
@@ -245,8 +246,10 @@ function BooksPage() {
               </li>
             ))}
           </ul>
+
         </div>
       </div>
+    </div>
     </div>
   );
 }
