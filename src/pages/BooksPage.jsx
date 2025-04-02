@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "../styles/booksPage.css";
 
 function BooksPage() {
   // State for search input
@@ -76,7 +77,7 @@ const handleSearch = async () => {
   const handleAddBook = async (book) => {
     setMessage("");
     try {
-      const res = await fetch("http://localhost:8080/api/books/add-from-selection", {
+      const res = await fetch("http://localhost:8080/api/books/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -139,7 +140,7 @@ const handleSearch = async () => {
 
   return (
       <div className="main-content">
-    <div className="book-page">
+    <div className="book-search">
 
         <h2 className="books-title">📚 Search & Manage Your Books</h2>
 
@@ -258,6 +259,7 @@ const handleSearch = async () => {
       </div>
     </div>
     </div>
+
   );
 }
 

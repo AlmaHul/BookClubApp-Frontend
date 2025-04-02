@@ -1,0 +1,236 @@
+
+
+/* Center the main content */
+.books-search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+  text-align: center;
+}
+
+/* Title styling */
+.books-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Search Box Styling */
+.search-book {
+height: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-book input {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 250px;
+}
+
+.search-book button {
+  background-color: #d1c4e9; /* Light purple */
+  color: white;
+  font-size: 1rem;
+  font-style: italic;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-book button:hover {
+  background-color: #b39ddb; /* Slightly darker purple on hover */
+}
+
+/* Message output */
+.message {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 20px;
+}
+
+/* Search Results Styling */
+.results-box {
+  width: 100%;
+  max-width: 800px;
+  margin-top: 20px;
+}
+
+.results-box .text-lg {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #6a0dad;
+  margin-bottom: 15px;
+}
+
+.list-book {
+  list-style-type: none;
+  padding: 0;
+}
+
+.list-book li {
+  padding: 16px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.list-book li p {
+  margin: 5px 0;
+}
+
+.add-book {
+  background-color: #66bb6a; /* Green */
+  color: white;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.add-book:hover {
+  background-color: #388e3c; /* Darker green */
+}
+
+/* My Books Section */
+.my-books-box {
+  width: 100%;
+  max-width: 800px;
+  margin-top: 40px;
+}
+
+.my-books-box .text-lg {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #6a0dad;
+  margin-bottom: 15px;
+}
+
+.my-books-box ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.my-books-box li {
+  padding: 16px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.my-books-box .flex {
+  display: flex;
+  gap: 10px;
+}
+
+.my-books-box button {
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.my-books-box .bg-yellow-500 {
+  background-color: #fbc02d; /* Yellow */
+  color: white;
+}
+
+.my-books-box .bg-yellow-500:hover {
+  background-color: #f57f17; /* Darker Yellow */
+}
+
+.my-books-box .bg-red-500 {
+  background-color: #e57373; /* Red */
+  color: white;
+}
+
+.my-books-box .bg-red-500:hover {
+  background-color: #d32f2f; /* Darker Red */
+}
+
+.my-books-box .bg-blue-500 {
+  background-color: #42a5f5; /* Blue */
+  color: white;
+}
+
+.my-books-box .bg-blue-500:hover {
+  background-color: #1e88e5; /* Darker Blue */
+}
+
+/* Edit Mode */
+.edit-box input,
+.edit-box textarea {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.edit-box button {
+  background-color: #66bb6a;
+  color: white;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.edit-box button:hover {
+  background-color: #388e3c;
+}
+
+.edit-box .ml-2 {
+  margin-left: 10px;
+}
+
+/* View Mode */
+.view-box p {
+  margin: 8px 0;
+}
+
+.view-box button {
+  font-size: 0.9rem;
+  color: #42a5f5;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.view-box button:hover {
+  text-decoration: underline;
+}
+
+/* Cancel Button Styling */
+.text-red-500 {
+  color: #e57373; /* Red */
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* Small Adjustments for Buttons */
+button:focus {
+  outline: none;
+}

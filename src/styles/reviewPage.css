@@ -16,6 +16,16 @@ body {
   min-height: 100vh;
   text-align: center;
 }
+/* Center the main content */
+.books-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+  text-align: center;
+}
 /* Title styling */
 .book-review {
   font-size: 2rem;
@@ -230,4 +240,43 @@ body {
   height: 150px;
   resize: vertical;
 }
+
+
+.review-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between buttons */
+  margin-top: 20px; /* Space from other content */
+}
+
+.update-btn {
+  background: none;
+  border: none;
+  color: blue; /* Blue color for the links */
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none; /* Remove underline */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: red; /* Blue color for the links */
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none; /* Remove underline */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.update-btn:hover,
+.delete-btn:hover {
+  color: #0056b3; /* Darker blue color on hover */
+  text-decoration: underline; /* Underline on hover */
+}
+
+
+
 
