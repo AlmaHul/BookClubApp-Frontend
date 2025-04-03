@@ -84,7 +84,7 @@ const CreateReviewPage = () => {
                 />
                 <input
                     type="number"
-                    placeholder="Rating (1-5)"
+                    placeholder="Rating ⭐ (1-5)"
                     value={rating}
                     onChange={(e) => setRating(Number(e.target.value))}
                     min="1"

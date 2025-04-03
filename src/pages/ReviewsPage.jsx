@@ -56,7 +56,7 @@ useEffect(() => {
   }
 
   return (
-    <div className="main-content">
+    <div className="books-content">
       <h1 className="book-review">Book reviews</h1>
 
       <div className="review-add-my">

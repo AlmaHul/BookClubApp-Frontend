@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50vh;
+  height: 70vh;
   padding: 20px;
   text-align: center;
 }
@@ -21,7 +21,7 @@
 
 /* Titel för chatten */
 .chat-box h2 {
-  color: #6c4f7d; /* Anpassa efter din design */
+  color: black; /* Anpassa efter din design */
   font-size: 2rem;
 }
 
