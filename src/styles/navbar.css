@@ -1,0 +1,116 @@
+
+
+/* Navbar header */
+.nav-header {
+  background-color: #6c4f7d; /* Lila bakgrund för navbaren */
+  color: white;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between; /* Första nivå av flexbox för att dela upp utrymmet */
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+
+/* Logo - till vänster */
+.logo {
+  font-family: 'Merriweather', serif; /* Typsnitt som passar för böcker */
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: white;
+  display: flex;
+  align-items: left;
+  flex-grow: 1; /* Gör så att logotypen får utrymme till vänster */
+}
+
+/* Menylänkar - centrerad på skärmen */
+.menu-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  padding-right: 120px;
+}
+/* Hover-effekt för individuella länkar */
+.menu-links a:hover {
+  text-decoration: underline;
+}
+/* Aktiva länkar blir svarta */
+.active-link {
+  color: black;  /* Gör den aktiva länken svart */
+}
+
+
+/* För mobilversionen */
+.hamburger-menu {
+  display: none;
+  font-size: 2rem;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* "Logga ut"-knapp längst till höger */
+.log-out {
+  background-color: transparent;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  float: right;
+}
+
+.log-out:hover {
+  background-color: #8e6fb9; /* Mörkare lila när man hovrar */
+}
+
+/* För responsiv design - mobil */
+@media (max-width: 768px) {
+  .hamburger-menu {
+    display: block; /* Gör hamburger-menyn synlig på mobil */
+  }
+
+  .menu-links {
+    display: none; /* Dölj menylänkarna på mobil */
+  }
+
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    background-color: #6c4f7d; /* Lila bakgrund för mobilmenyn */
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .mobile-menu a, .mobile-log-out {
+    color: white;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .mobile-menu a:hover, .mobile-log-out:hover {
+    background-color: #8e6fb9; /* Mörkare lila för mobilmenyn */
+  }
+}
+
+/* Meny öppen */
+.mobile-menu.open {
+  display: flex;
+}
