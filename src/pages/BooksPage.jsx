@@ -3,29 +3,28 @@ import { useNavigate } from "react-router-dom";
 import "../styles/booksPage.css";
 
 function BooksPage() {
-  // State for search input
+ 
   const [searchTitle, setSearchTitle] = useState("");
-  // State to store search results from Libris
+  
   const [searchResults, setSearchResults] = useState([]);
-  // State to store books saved by the logged-in user
+  
   const [myBooks, setMyBooks] = useState([]);
-  // State for showing messages to the user
+  
   const [message, setMessage] = useState("");
-  // State for book currently being edited
+ 
   const [editBook, setEditBook] = useState(null);
-  // State for book currently being viewed in detail
+  
   const [viewBook, setViewBook] = useState(null);
-  // Retrieve JWT token from local storage
+  
   const token = localStorage.getItem("token");
   console.log("JWT Token:", token);
   const navigate = useNavigate();
 
-  // Load user's books on first render
   useEffect(() => {
     fetchMyBooks();
   }, []);
 
-  // Fetch books that belong to the current user
+  
   const fetchMyBooks = async () => {
     try {
       const res = await fetch("http://localhost:8080/api/books", {
@@ -52,10 +51,10 @@ const handleSearch = async () => {
       body: JSON.stringify({ title: searchTitle }),
     });
 
-    console.log("API response status:", res.status); // 👈 Logga HTTP-statuskoden
+    console.log("API response status:", res.status); 
 
     const responseData = await res.json();
-    console.log("API response body:", responseData); // 👈 Logga API-svaret
+    console.log("API response body:", responseData);
 
     if (!res.ok) {
       setMessage("❌ " + (responseData.error || "Search failed"));
@@ -73,7 +72,7 @@ const handleSearch = async () => {
 
 
 
-  // Add selected book from search results to user's collection
+
   const handleAddBook = async (book) => {
     setMessage("");
     try {
@@ -100,7 +99,6 @@ const handleSearch = async () => {
     }
   };
 
-  // Delete book by ID
   const handleDelete = async (id) => {
     try {
       const res = await fetch(`http://localhost:8080/api/books/${id}`, {
@@ -118,7 +116,7 @@ const handleSearch = async () => {
     }
   };
 
-  // Save updates after editing a book
+  
   const handleEditSave = async () => {
     try {
       const res = await fetch(`http://localhost:8080/api/books/${editBook.id}`, {
@@ -161,10 +159,10 @@ const handleSearch = async () => {
           </button>
         </div>
 
-        {/* Message output */}
+       
         {message && <p className="mb-4 text-sm text-gray-700">{message}</p>}
 
-        {/* Search Results Section */}
+      
         {searchResults.length > 0 && (
           <div className="results-box">
             <h3 className="text-lg font-semibold mb-3 text-purple-600">🎯 Exact Matches:</h3>
@@ -186,14 +184,14 @@ const handleSearch = async () => {
           </div>
         )}
 
-        {/* My Books Section */}
+       
         <div className="my-books-box">
           <h3 className="text-lg font-semibold mb-3 text-purple-600">📚 My Books:</h3>
           <ul className="space-y-4">
             {myBooks.map((book) => (
               <li key={book.id} className="border rounded p-4 bg-gray-50 shadow-sm">
                 {editBook?.id === book.id ? (
-                  // Edit mode
+                 
                   <div className="edit-box">
                     <input
                       value={editBook.title}
@@ -216,7 +214,7 @@ const handleSearch = async () => {
                     <button onClick={() => setEditBook(null)} className="ml-2 text-sm text-red-500">Cancel</button>
                   </div>
                 ) : viewBook?.id === book.id ? (
-                  // View mode
+                  
                   <div>
                     <p className="font-bold text-purple-800">{book.title}</p>
                     <p className="text-sm text-gray-700">👤 {book.author}</p>
@@ -224,7 +222,7 @@ const handleSearch = async () => {
                     <button onClick={() => setViewBook(null)} className="text-sm text-blue-500 mt-2">Close</button>
                   </div>
                 ) : (
-                  // Normal mode
+                  
                   <>
                     <p className="font-bold text-purple-800">{book.title}</p>
                     <p className="text-sm text-gray-700">👤 {book.author}</p>
