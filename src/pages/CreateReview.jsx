@@ -10,7 +10,7 @@ const CreateReviewPage = () => {
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
     const [comment, setComment] = useState("");
-    const [rating, setRating] = useState(1); // Default rating to 1
+    const [rating, setRating] = useState(1);
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
@@ -24,11 +24,11 @@ const CreateReviewPage = () => {
 
         const reviewData = {
             title,
-            author, // Använd den inloggade användarens namn
+            author,
             comment,
             rating,
             user_username: user.username,
-            user_id: user.id, // Säkerställ att user har ett id
+            user_id: user.id,
         };
 
         console.log("Review data being sent to server:", reviewData);
@@ -47,7 +47,7 @@ const CreateReviewPage = () => {
             console.log("Server response data:", data);
 
             if (response.ok) {
-                navigate("/reviews"); // Navigera tillbaka till reviews-sidan
+                navigate("/reviews");
             } else {
                 setError(data.error || "Failed to create review");
             }

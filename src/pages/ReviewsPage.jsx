@@ -6,12 +6,12 @@ import { useAuth } from '../auth/AuthProvider';
 const ReviewsPage = () => {
     const { isLoggedIn } = useAuth();
 
-  const [reviews, setReviews] = useState([]); // För att spara alla recensioner
-  const [loading, setLoading] = useState(true); // För att hantera laddning
-  const [error, setError] = useState(""); // För att hantera eventuella fel
+  const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  // Hämta recensioner när komponenten laddas
+
 useEffect(() => {
   const fetchReviews = async () => {
     try {
@@ -19,34 +19,27 @@ useEffect(() => {
       if (response.ok) {
         const data = await response.json();
 
-        // Sortera recensionerna så att de nyaste kommer först
         const sortedReviews = data.reviews.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
-        setReviews(sortedReviews); // Sätt de sorterade recensionerna
+        setReviews(sortedReviews);
       } else {
         setError("Failed to fetch reviews");
       }
     } catch (error) {
       setError("An error occurred while fetching reviews");
     } finally {
-      setLoading(false); // Sätt loading till false när hämtningen är klar
+      setLoading(false);
     }
   };
 
-
-
     fetchReviews();
-}, []); // Tom array innebär att useEffect körs bara en gång vid mount
+}, []);
 
 
-
-
-  // Funktion för att navigera till skapa recension-sidan
   const handleAddReview = () => {
     navigate("/create-review");
   };
 
-  // Visa laddningsmeddelande eller felmeddelande
   if (loading) {
     return <div>Loading...</div>;
   }

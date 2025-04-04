@@ -5,8 +5,10 @@ import "../styles/reviewPage.css";
 
 const UpdateReview = () => {
   const { isLoggedIn, user } = useAuth();
+    console.log("Auth status:", isLoggedIn, "User:", user);
+
   const navigate = useNavigate();
-  const { reviewId } = useParams(); // Use the reviewId from the URL
+  const { reviewId } = useParams();
 
   const [review, setReview] = useState({
     title: "",
@@ -16,6 +18,9 @@ const UpdateReview = () => {
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
+
+  const token = localStorage.getItem("token");
+  console.log("JWT Token:", token);
 
   useEffect(() => {
     const fetchReview = async () => {
@@ -36,7 +41,7 @@ const UpdateReview = () => {
         );
         if (response.ok) {
           const data = await response.json();
-          setReview(data); // Fill the form with existing review data
+          setReview(data);
         } else {
           setError("Failed to fetch review.");
         }
@@ -87,7 +92,7 @@ const UpdateReview = () => {
       });
 
       if (response.ok) {
-        navigate("/my-reviews"); // Redirect to MyReviews page after successful update
+        navigate("/my-reviews");
       } else {
         setError("Failed to update the review.");
       }
@@ -119,10 +124,6 @@ const UpdateReview = () => {
           onChange={handleChange}
           required
         />
-
-
-
-
         <input
           type="text"
           placeholder="Author"
@@ -131,10 +132,6 @@ const UpdateReview = () => {
           onChange={handleChange}
           required
         />
-
-
-
-
         <textarea
           name="comment"
           placeholder="Comment"
@@ -142,10 +139,6 @@ const UpdateReview = () => {
           onChange={handleChange}
           required
         />
-
-
-
-
         <input
           type="number"
           name="rating"
@@ -156,17 +149,14 @@ const UpdateReview = () => {
           max="5"
           required
         />
-
-
       <button type="submit" className="create-review-button">
         Save Changes
       </button>
     </form>
   </div>
 
-
-
   );
 };
 
 export default UpdateReview;
+

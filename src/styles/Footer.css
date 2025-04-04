@@ -1,0 +1,37 @@
+.footer {
+  background-color: #6c4f7d; /* Samma lila bakgrund som navbaren */
+  color: white;
+  padding: 20px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  list-style: none;
+}
+
+.footer-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+  text-decoration: underline;
+  color: #d8b6ff; /* Ljusare lila vid hover */
+}
+
+/* Responsiv design */
+@media (max-width: 768px) {
+  .footer-nav {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

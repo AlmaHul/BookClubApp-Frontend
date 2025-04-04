@@ -5,7 +5,7 @@ import { useAuth } from '../auth/AuthProvider';
 
 const MyReviewsPage = () => {
     const { isLoggedIn, user } = useAuth();
-    console.log("Auth status:", isLoggedIn, "User:", user); // Debug-logg
+    console.log("Auth status:", isLoggedIn, "User:", user);
 
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -26,7 +26,6 @@ const MyReviewsPage = () => {
                     const data = await response.json();
                     if (!Array.isArray(data)) throw new Error("Invalid data format: expected an array");
 
-                    // Sortera recensionerna så att de nyaste kommer först
                     const sortedReviews = data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
                     setReviews(sortedReviews);
                 } else {
@@ -45,7 +44,6 @@ const MyReviewsPage = () => {
         }
     }, [user, isLoggedIn]);
 
-    // Funktion för att radera en recension
     const handleDeleteReview = async (reviewId) => {
         const confirmDelete = window.confirm("Are you sure you want to delete this review?");
         if (!confirmDelete) return;
@@ -62,7 +60,6 @@ const MyReviewsPage = () => {
         }
     };
 
-    // Funktion för att navigera till uppdateringssidan
     const handleUpdateReview = (reviewId) => {
         navigate(`/update-review/${reviewId}`);
     };
@@ -109,7 +106,6 @@ const MyReviewsPage = () => {
                                 Reviewed at: {review.created_at ? new Date(review.created_at).toLocaleString() : "N/A"}
                             </p>
 
-                            {/* Uppdatera & Radera-knappar */}
                             <div className="review-buttons">
                                 <button
                                     className="update-btn"
