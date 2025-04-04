@@ -8,6 +8,7 @@ import HomePage from './pages/HomePage';
 import ProfilePage from './pages/ProfilePage';
 import ReviewsPage from './pages/ReviewsPage';
 import ProtectedRoute from './components/ProtectedRoute';
+import Footer from './components/Footer';
 import { saveToken, getToken, removeToken } from './auth/authService';
 import CreateReview from './pages/CreateReview';
 import MyReviewsPage from './pages/myReviews';
@@ -55,6 +56,7 @@ function App() {
         <Route path="/my-reviews" element={<ProtectedRoute><MyReviewsPage /></ProtectedRoute>} />
         <Route path="/update-review/:reviewId" element={<ProtectedRoute><UpdateReviewPage /></ProtectedRoute>} />
       </Routes>
+        <Footer />
     </>
   );
 }

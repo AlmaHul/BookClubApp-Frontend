@@ -76,12 +76,7 @@ const Navbar = () => {
           <NavLink to="/books" onClick={() => setMenuOpen(false)} className={navLinkClass}>Books</NavLink>
           <NavLink to="/profile" onClick={() => setMenuOpen(false)} className={navLinkClass}>Profile</NavLink>
           <NavLink to="/reviews" onClick={() => setMenuOpen(false)} className={navLinkClass}>Reviews</NavLink>
-          <button
-            onClick={handleLogout}
-            className="mobile-log-out"
-          >
-            Logga ut
-          </button>
+
         </>
       ) : (
         <>
