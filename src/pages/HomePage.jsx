@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useAuth } from '../auth/AuthProvider';
+import { useAuth } from '../auth/AuthProvider'; // Importera useAuth för att få användardata
 import "../styles/HomePage.css";
 
 const HomePage = () => {
-  const { isLoggedIn, user } = useAuth();
+  const { isLoggedIn, user } = useAuth(); // Använd useAuth för att hämta om användaren är inloggad och deras data
 
   const [message, setMessage] = useState("");
   const [response, setResponse] = useState("");
   const [error, setError] = useState("");
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!message) return;
@@ -25,8 +25,9 @@ const HomePage = () => {
   };
 
   return (
-      <div className="home-page">
+    <div className="home-page">
       <div className="chat-box">
+        <h1>Welcome {isLoggedIn ? user.username : "Guest"}!</h1> {/* Här visas användarens namn eller 'Guest' om de inte är inloggade */}
         <h2>Ask AI about book tips</h2>
         <form onSubmit={handleSubmit} className="chat-form">
           <input
@@ -49,9 +50,10 @@ const HomePage = () => {
           </div>
         )}
       </div>
-      </div>
-
+    </div>
   );
 };
 
 export default HomePage;
+
+

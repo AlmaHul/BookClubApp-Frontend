@@ -14,9 +14,9 @@ import CreateReview from './pages/CreateReview';
 import MyReviewsPage from './pages/myReviews';
 import UpdateReviewPage from './pages/UpdateReviewPage';
 
-
 function App() {
-  const [token, setToken] = useState(getToken());
+  const location = useLocation();
+  const [token, setToken] = useState(getToken() || null);
 
   // Uppdatera token när det ändras i localStorage
   useEffect(() => {
@@ -39,7 +39,7 @@ function App() {
     setToken(null);
   };
 
-   return (
+  return (
     <>
       {/* Kolla om användaren är på login eller register-sidan, i så fall rendera inte Navbar */}
       {token && location.pathname !== '/login' && location.pathname !== '/register' && <Navbar logout={logout} />}
@@ -56,7 +56,7 @@ function App() {
         <Route path="/my-reviews" element={<ProtectedRoute><MyReviewsPage /></ProtectedRoute>} />
         <Route path="/update-review/:reviewId" element={<ProtectedRoute><UpdateReviewPage /></ProtectedRoute>} />
       </Routes>
-        <Footer />
+      <Footer />
     </>
   );
 }
