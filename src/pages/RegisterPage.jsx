@@ -1,70 +1,53 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-import "../styles/login.css";  // För att hålla stilen konsistent
+import { useAuth } from '../auth/AuthProvider';
+import "../styles/login.css"; // För att hålla stilen konsistent
 
 function RegisterPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://127.0.0.1:8080/api/auth/register", {
-        username,
-        password,
-      });
-      setMessage("🎉 " + res.data.message);
-      setTimeout(() => {
-        navigate("/");
-      }, 1500);
+      const res = await axios.post('/api/auth/register', { username, password });
+      if (res.data?.token) {
+        login(res.data.token);
+      }
+      setMessage("🎉 " + (res.data?.message || "Registrering lyckades!"));
+      navigate("/");
     } catch (err) {
       setMessage("❌ Registration failed: " + (err.response?.data?.error || "Unknown error"));
     }
   };
 
   return (
-<div className="main-content">
-      <div className="register-box">
-        <h2 className="register-text">💫 Join the Book Club </h2>
-        <form onSubmit={handleRegister} className="flex flex-col gap-4">
-          <input
-            type="text"
-            placeholder="📚 Choose a username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-            className="text-box"
-          />
-          <input
-            type="password"
-            placeholder="🔒 Choose a password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className="text-box"
-          />
-          <button
-            type="submit"
-            className="register-button"
-          >
-            Register
-          </button>
-        </form>
-        {message && (
-          <p className="mt-4 text-sm text-gray-700">{message}</p>
-        )}
-        <p className="mt-6 text-sm">
-          Already a member?{" "}
-          <Link to="/login" className="link-back">
-            Login here ✨
-          </Link>
-        </p>
-      </div>
-      </div>
-
+    <div className="login-container">
+      <form className="login-form" onSubmit={handleRegister}>
+        <h1>Registrera</h1>
+        {message && <p className={message.startsWith("❌") ? "error" : "success"}>{message}</p>}
+        <label htmlFor="username">Användarnamn:</label>
+        <input
+          id="username"
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <label htmlFor="password">Lösenord:</label>
+        <input
+          id="password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit">Registrera</button>
+        <p>Har du redan ett konto? <Link to="/login">Logga in</Link></p>
+      </form>
+    </div>
   );
 }
 
